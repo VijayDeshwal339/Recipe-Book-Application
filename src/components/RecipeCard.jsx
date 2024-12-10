@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import React from "react";
 
 const RecipeCard = ({ recipe }) => (
   <div className="col-md-4 mb-4">
@@ -21,7 +21,7 @@ const RecipeCard = ({ recipe }) => (
       </div>
     </div>
   </div>
-);
+ 
+          );
 
 export default RecipeCard;
-

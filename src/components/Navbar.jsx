@@ -1,4 +1,15 @@
-const Navbar = () => (
+import React, { useState } from 'react';
+
+const Navbar = ({ onSearch }) => {
+  const [query, setQuery] = useState('');
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setQuery(value);
+    onSearch(value);  // Notify the parent component (App) about the change
+  };
+
+  return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
         <a className="navbar-brand" href="/">Recipe Book</a>
@@ -14,16 +25,19 @@ const Navbar = () => (
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <a className="nav-link" href="/">Home</a>
-            </li>
-          </ul>
+          <form className="form-inline ml-auto">
+            <input
+              className="form-control mr-sm-2"
+              type="search"
+              placeholder="Search recipes"
+              value={query}
+              onChange={handleInputChange}
+            />
+          </form>
         </div>
       </div>
     </nav>
   );
-  
-  export default Navbar;
-  
+};
 
+export default Navbar;
